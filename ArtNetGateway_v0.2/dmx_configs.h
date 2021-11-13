@@ -3,22 +3,22 @@
 
 #include <avr/io.h>
 
-// Configurations for USART 1
-#define DMX_RX_VECT USART1_RX_vect
-#define DMX_TX_VECT USART1_TX_vect
-#define DMX_UDR UDR1
-#define DMX_UBRRH UBRR1H
-#define DMX_UBRRL UBRR1L
-#define DMX_UCSRA UCSR1A
-#define DMX_UCSRB UCSR1B
-#define DMX_TXEN TXEN1
-#define DMX_TXCIE TXCIE1
-#define DMX_RXEN RXEN1
-#define DMX_RXCIE RXCIE1
-#define DMX_FE FE1
-#define DMX_RX_PIN 19
-#define DMX_TX_PIN 18
-#define DMX_OE_PIN 17
+// Configurations for USART 3
+#define DMX_RX_VECT USART3_RX_vect
+#define DMX_TX_VECT USART3_TX_vect
+#define DMX_UDR UDR3
+#define DMX_UBRRH UBRR3H
+#define DMX_UBRRL UBRR3L
+#define DMX_UCSRA UCSR3A
+#define DMX_UCSRB UCSR3B
+#define DMX_TXEN TXEN3
+#define DMX_TXCIE TXCIE3
+#define DMX_RXEN RXEN3
+#define DMX_RXCIE RXCIE3
+#define DMX_FE FE3
+#define DMX_RX_PIN 15
+#define DMX_TX_PIN 14
+#define DMX_OE_PIN 2
 
 #ifndef F_CPU
 #define F_CPU 16000000
