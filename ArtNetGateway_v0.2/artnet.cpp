@@ -3,6 +3,8 @@
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>
+#include <ESP8266WiFi.h>
+#include <WiFiUdp.h>
 #define UDP_TX_PACKET_MAX_SIZE 550
 #include "dmx.h"
 ////////////Definitions///////////////
@@ -20,6 +22,9 @@ uint8_t DunivAddr = 0x04;//Artnet universe address for output D (bits 3:0)
 /////////////////////////////////////
 
 //////////Network settings/////////////
+#define WIFI_SSID "Dankytown"
+#define WIFI_PASS "2420blazedell"
+#define UDP_PORT 6454
 byte mac[] = {  
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip(192, 168, 50, 30);
