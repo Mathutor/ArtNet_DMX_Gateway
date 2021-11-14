@@ -1,0 +1,126 @@
+*************************** START ****************************
+START TIME: 202111132150
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+chip sync ok
+0x3ff00050: 02450000
+0x3ff00054: 02009d8a
+0x3ff00058: c200b000
+0x3ff0005c: 00483fda
+check_err_0: 0bcheck_err_1: 00check_err_2: 00check_err_3: 02check_err_4: 0b====================
+EFUSE NORMAL MODE
+====================
+=========================
+CRC IN MODE 1: 
+crc_calc_res: 194
+target crc val: 194
+=========================
+=========================
+CRC IN MODE 1:
+crc_calc_res: 69
+target crc val: 69
+=========================
+==================
+EFUSE LOG:
+======================
+    EFUSE LOG:
+    ---------------
+    REG0:02450000
+    REG1:02009D8A
+    REG2:c200b000
+    REG3:00483FDA
+    ----------------
+    ====================
+                                   EFUSE NORMAL MODE
+                                   ====================
+EFUSE CHECK PASS...48bit mac
+-----------------------
+ 48 3f da 9d 8a 02CUSTOM_ID: 0C 20 00 00 00 04 50 00 
+MAC AP : 4A-3F-DA-9D-8A-02
+MAC STA: 48-3F-DA-9D-8A-02
+get mac res: 1
+get flash id : 0x00164020
+manufacturer_id: 0x20
+device_id: 0x4016
+com closed
+Use time: 11 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202111132151
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+chip sync ok
+0x3ff00050: 02450000
+0x3ff00054: 02009d8a
+0x3ff00058: c200b000
+0x3ff0005c: 00483fda
+check_err_0: 0bcheck_err_1: 00check_err_2: 00check_err_3: 02check_err_4: 0b====================
+EFUSE NORMAL MODE
+====================
+=========================
+CRC IN MODE 1: 
+crc_calc_res: 194
+target crc val: 194
+=========================
+=========================
+CRC IN MODE 1:
+crc_calc_res: 69
+target crc val: 69
+=========================
+==================
+EFUSE LOG:
+======================
+    EFUSE LOG:
+    ---------------
+    REG0:02450000
+    REG1:02009D8A
+    REG2:c200b000
+    REG3:00483FDA
+    ----------------
+    ====================
+                                   EFUSE NORMAL MODE
+                                   ====================
+EFUSE CHECK PASS...48bit mac
+-----------------------
+ 48 3f da 9d 8a 02CUSTOM_ID: 0C 20 00 00 00 04 50 00 
+MAC AP : 4A-3F-DA-9D-8A-02
+MAC STA: 48-3F-DA-9D-8A-02
+get mac res: 1
+get flash id : 0x00164020
+manufacturer_id: 0x20
+device_id: 0x4016
+Wrote 10224 bytes (6862 compressed) at 0x00000000 in 0.6 seconds (effective 131.1 kbit/s)...
+Hash of data verified.Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 1449.7 kbit/s)...
+Hash of data verified.Wrote 8192 bytes (31 compressed) at 0x00009000 in 0.0 seconds (effective 3873.4 kbit/s)...
+Hash of data verified.Wrote 3072 bytes (151 compressed) at 0x00018000 in 0.0 seconds (effective 747.5 kbit/s)...
+Hash of data verified.Wrote 4096 bytes (78 compressed) at 0x00019000 in 0.0 seconds (effective 1936.9 kbit/s)...
+Hash of data verified.Wrote 2344 bytes (1487 compressed) at 0x0001a000 in 0.1 seconds (effective 129.2 kbit/s)...
+Hash of data verified.Wrote 3368 bytes (2526 compressed) at 0x0001b000 in 0.2 seconds (effective 112.6 kbit/s)...
+Hash of data verified.Wrote 2344 bytes (1499 compressed) at 0x0001c000 in 0.1 seconds (effective 129.0 kbit/s)...
+Hash of data verified.Wrote 1168 bytes (895 compressed) at 0x0001d000 in 0.1 seconds (effective 97.1 kbit/s)...
+Hash of data verified.Wrote 1692 bytes (1322 compressed) at 0x0001e000 in 0.1 seconds (effective 104.2 kbit/s)...
+Hash of data verified.Wrote 1172 bytes (914 compressed) at 0x0001f000 in 0.1 seconds (effective 96.9 kbit/s)...
+Hash of data verified.Wrote 807184 bytes (510586 compressed) at 0x00020000 in 45.4 seconds (effective 142.3 kbit/s)...
+Hash of data verified.
+Leaving...
+com closed
+Use time: 49 s
+Download result: PASS
+*************************** END ****************************
+
