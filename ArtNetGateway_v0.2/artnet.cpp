@@ -1,12 +1,13 @@
+
+
 #include "artnet.h"
 #include <Arduino.h>
 #include <SPI.h>
-#include <Ethernet.h>
-#include <EthernetUdp.h>
-#include <ESP8266WiFi.h>
-#include <WiFiUdp.h>
+#include <WiFiEspAT.h>
 
-#define UDP_TX_PACKET_MAX_SIZE 550
+
+
+
 #include "dmx.h"
 ////////////Definitions///////////////
 #define ART_NET_HEADER "Art-Net"
@@ -22,18 +23,16 @@ uint8_t DunivAddr = 0x04;//Artnet universe address for output D (bits 3:0)
 
 /////////////////////////////////////
 
-//////////Network settings/////////////
+///////ESP & Network settings////////
 #define WIFI_SSID "Dankytown"
 #define WIFI_PASS "2420blazdell"
 #define UDP_PORT 6454
+#define UDP_TX_PACKET_MAX_SIZE 550  legacy
+#define AT_BAUD_RATE 115200
 
+WiFiEspAtUDP udp; // An WiFiEspAtUDP instance to let us send and receive packets over UDP
 
-
-byte mac[] = {  
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 50, 30);
 unsigned int localPort = UDP_PORT;      // local port to listen on
-WiFiUDP Udp; // An EthernetUDP instance to let us send and receive packets over UDP
 unsigned char packetBuffer[UDP_TX_PACKET_MAX_SIZE]; //buffer to hold incoming packet,
 int packetSize;//used for storing the size of the 
 ///////////////////////////////////////
@@ -78,9 +77,29 @@ void runOpDmx();
 //////////////////////////////////////
 
 
-void ethernetSetup(){
-  Ethernet.begin(mac,ip);
-  Udp.begin(localPort);
+void wifiSetup(){
+ 
+  //Set up serial port and init wifi on that serial port
+  Serial1.begin(AT_BAUD_RATE);
+  delay(100); //delays to make sure everything is ready, may be able to be removed.
+  WiFi.init(Serial1);
+  delay(100); //delays to make sure everything is ready, may be able to be removed.
+  
+  // waiting for connection to Wifi network set with the SetupWiFiConnection sketch
+  Serial.println("Waiting for connection to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print('.');
+  }
+  
+  // print the ESP's IP address:
+  Serial.println("Connected to wifi");
+  IPAddress ip = WiFi.localIP();
+  Serial.print("IP Address: ");
+  Serial.println(ip);
+
+  //open UDP port
+  udp.begin(localPort);
 }
 
 void serialSetup(){
@@ -89,10 +108,10 @@ void serialSetup(){
 
 
 void packetRead(){ //reads packet into packet Buffer
-  packetSize = Udp.parsePacket();
+  packetSize = udp.parsePacket();
   if(packetSize)
   {
-    Udp.read(packetBuffer,UDP_TX_PACKET_MAX_SIZE); // read the packet into packetBufffer
+    udp.read(packetBuffer,UDP_TX_PACKET_MAX_SIZE); // read the packet into packetBufffer
     //packetDump();
   }
 }

@@ -2,7 +2,7 @@
 #define ARTNET_H
 
 
-void ethernetSetup();
+void wifiSetup();
 void serialSetup();
 void packetRead();
 void artnetParse();

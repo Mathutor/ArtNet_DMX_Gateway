@@ -4,8 +4,8 @@
 #include "dmx.h"
 
 void setup() {
-  ethernetSetup();
   serialSetup();
+  ethernetSetup();
   dmxInit();
   // dmxserialSetup();
 }
