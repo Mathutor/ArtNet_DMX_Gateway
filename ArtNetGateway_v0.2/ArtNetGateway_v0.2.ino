@@ -5,7 +5,7 @@
 
 void setup() {
   serialSetup();
-  ethernetSetup();
+  wifiSetup();
   dmxInit();
   // dmxserialSetup();
 }

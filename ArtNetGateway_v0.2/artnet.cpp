@@ -27,7 +27,7 @@ uint8_t DunivAddr = 0x04;//Artnet universe address for output D (bits 3:0)
 #define WIFI_SSID "Dankytown"
 #define WIFI_PASS "2420blazdell"
 #define UDP_PORT 6454
-#define UDP_TX_PACKET_MAX_SIZE 550  legacy
+#define UDP_TX_PACKET_MAX_SIZE 550
 #define AT_BAUD_RATE 115200
 
 WiFiEspAtUDP udp; // An WiFiEspAtUDP instance to let us send and receive packets over UDP
@@ -84,8 +84,18 @@ void wifiSetup(){
   delay(100); //delays to make sure everything is ready, may be able to be removed.
   WiFi.init(Serial1);
   delay(100); //delays to make sure everything is ready, may be able to be removed.
+
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true);
+  }
   
-  // waiting for connection to Wifi network set with the SetupWiFiConnection sketch
+  // setting SSID, pass and initializing network settings
+  //WiFi.begin(WIFI_SSID, WIFI_PASS);
+  
+  // waiting for connection to the Wifi network set
   Serial.println("Waiting for connection to WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -98,7 +108,7 @@ void wifiSetup(){
   Serial.print("IP Address: ");
   Serial.println(ip);
 
-  //open UDP port
+  //open UDP port to begin listening
   udp.begin(localPort);
 }
 
@@ -108,10 +118,12 @@ void serialSetup(){
 
 
 void packetRead(){ //reads packet into packet Buffer
-  packetSize = udp.parsePacket();
+  packetSize = udp.availableForParse();
+  IPAddress remoteIp;
+  uint16_t remotePort = 0;
   if(packetSize)
   {
-    udp.read(packetBuffer,UDP_TX_PACKET_MAX_SIZE); // read the packet into packetBufffer
+    udp.parsePacket((uint8_t*) packetBuffer, UDP_TX_PACKET_MAX_SIZE, remoteIp, remotePort); // read the packet into packetBufffer
     //packetDump();
   }
 }
